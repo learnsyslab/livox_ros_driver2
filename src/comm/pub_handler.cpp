@@ -23,6 +23,7 @@
 //
 
 #include "pub_handler.h"
+#include "time_sync_monitor.h"
 #include "livox_lidar_api.h"
 #include <cstdlib>
 #include <chrono>
@@ -101,6 +102,10 @@ void PubHandler::OnLivoxLidarPointCloudCallback(uint32_t handle, const uint8_t d
   if (!self) {
     return;
   }
+
+  TimeSyncMonitor::GetInstance().OnPacket(
+      handle, data->time_type,
+      GetEthPacketTimestamp(data->time_type, data->timestamp, sizeof(data->timestamp)));
 
   if (data->time_type != kTimestampTypeNoSync) {
     is_timestamp_sync_.store(true);

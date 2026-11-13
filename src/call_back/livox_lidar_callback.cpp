@@ -25,6 +25,7 @@
 #include "livox_lidar_callback.h"
 
 #include "livox_lidar_api.h"
+#include "../comm/time_sync_monitor.h"
 #include <string>
 #include <thread>
 #include <iostream>
@@ -39,6 +40,7 @@ void LivoxLidarCallback::LidarInfoChangeCallback(const uint32_t handle,
     return;
   }
   LdsLidar* lds_lidar = static_cast<LdsLidar*>(client_data);
+  TimeSyncMonitor::GetInstance().AddLidar(handle);
 
   LidarDevice* lidar_device = GetLidarDevice(handle, client_data);
   if (lidar_device == nullptr) {

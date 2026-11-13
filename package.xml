@@ -3,17 +3,18 @@
 <package format="3">
   <name>livox_ros_driver2</name>
   <version>1.0.0</version>
-  <description>The ROS device driver for Livox 3D LiDARs, for ROS2</description>
+  <description>ROS2 device driver for Livox 3D LiDARs (Livox-SDK2), with PTP/GPS time sync status monitoring</description>
   <maintainer email="dev@livoxtech.com">feng</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
-  <build_depend>rosidl_default_generators</build_depend>
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
   <member_of_group>rosidl_interface_packages</member_of_group>
 
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
   <depend>std_msgs</depend>
+  <depend>builtin_interfaces</depend>
   <depend>sensor_msgs</depend>
   <depend>rcutils</depend>
   <depend>pcl_conversions</depend>
